@@ -11,33 +11,83 @@ from logistic_regression import LogisticRegression
 
 class MatrixSpliter(object):
 
-	# TODO: comment
+	"""
+	Split the given matrix to m * n pieces
+
+	Attributes:
+	    X : the matrix that hold a x in one line
+		Y : a one-dimensional vector that hold the result y for give x in the same line in X
+		m : m pieces for line
+		n : n pieces for column
+	"""
 
 	def __init__(self, X, Y, m, n):
-		# TODO: comment and all
+		"""
+		Init fuction, save the attributes
+
+		Args:
+		    X : see MatrixSpliter.X
+		    Y : see MatrixSpliter.X
+		    m : see MatrixSpliter.m
+		    n : see MatrixSpliter.n
+		"""
 		pass
 
 	def get_submatrix(self, m, n):
-		# TODO: comment and complete the matrix split, get the m line n column sub matrix
+		"""
+		Get the sub matrix in mth line and nth column
+
+		Args:
+		    m : mth pieces for line
+		    n : nth pieces for column
+
+		Returns:
+		    (X, Y) tuple of sub matrix
+		"""
 		pass
+#endclass MatrixSpliter
 
 
 class CombineDt(object):
 
-	# TODO: comment
+	"""
+	Combine all dt computed from sub thread for sub matrix
+
+	Attributes:
+		m : m pieces for line
+		n : n pieces for column
+	"""
 
 	def __init__(self, m, n):
-		# TODO: comment and all
+		"""
+		Init fuction, save the attributes
+
+		Args:
+		    m : see CombineDt.m
+		    n : see CombineDt.n
+		"""
 		pass
 
 	def add(m, n, Dt):
-		# TODO: comment and add new result
+		"""
+		Add new Dt result compute from the mth line and nth column sub matrix
+
+		Args:
+		    m : mth line
+		    n : nth column
+		    Dt : the Dt for given sub matrix
+		"""
 		pass
 
 	def combine():
-		# TODO: comment and combine all results
-		pass
+		"""
+		Get the final dt to use for learning
 
+		Returns:
+		    final Dt vector whose dimensionality is same with x
+		"""
+		pass
+#endclass CombineDt
 
 class ParallelLogisticRegression(LogisticRegression):
 
@@ -48,7 +98,7 @@ class ParallelLogisticRegression(LogisticRegression):
 	__metaclass__ = ABCMeta
 
 	def train(self, X, Y):
-		# TODO: comment and complete the parallel training process
+		# TODO: complete the parallel training process
 		pass
 
 
@@ -65,4 +115,4 @@ class ParallelLogisticRegression(LogisticRegression):
 		    the Dt computed by the sub matrix
 		"""
 		pass
-
+#endclass ParallelLogisticRegression

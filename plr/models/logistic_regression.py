@@ -65,3 +65,4 @@ class LogisticRegression(object):
 
 		"""
 		pass
+#endclass LogisticRegression
