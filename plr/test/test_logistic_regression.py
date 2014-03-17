@@ -5,12 +5,11 @@
 Test plr.models.logistic_regression.py
 """
 
-import unittest
 from abc import ABCMeta, abstractmethod
 from plr.models.logistic_regression import LogisticRegression
 from numpy import array
 
-class TestLogisticRegression(unittest.TestCase):
+class TestLogisticRegression(object):
 	
 	"""
 	An abstract class for LogisticRegression's implement class' test
@@ -20,12 +19,16 @@ class TestLogisticRegression(unittest.TestCase):
 
 	def setUp(self):
 		self.trainX = array([
-			[1, 2, 3, 4], 
-			[1, 3, 3, 4],
-			[3, 4, 1, 2],
-			[5, 3, 2, 1]])
+			[1, 2, 33, 14], 
+			[1, 3, 13, 44],
+			[30, 25, 1, 2],
+			[26, 40, 2, 1]])
 		self.trainY = array(
 			[1, 1, -1, -1])
+		self.testX_1 = array([1, 1, 43, 24])
+		self.testY_1 = 1
+		self.testX_2 = array([43, 24, 1, 1])
+		self.testY_2 = -1
 		self.build_model(len(self.trainX[0]), 20, None)
 
 
@@ -43,51 +46,54 @@ class TestLogisticRegression(unittest.TestCase):
 
 	def testTrainMethod0(self):
 		self.lr_model.train_method = 0
-		pass
 
 
 	def testPredictMethod0(self):
 		self.lr_model.train_method = 0
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(True, self.predict(array([1, 1, 3, 4])) > 0)
+		self.assertEqual(True, self.testY_1 * self.lr_model.predict(self.testX_1) > 0)
+		self.assertEqual(True, self.testY_2 * self.lr_model.predict(self.testX_2) > 0)
 
 
 	def testClassifyMethod0(self):
 		self.lr_model.train_method = 0
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(1, self.classify(array([1, 1, 3, 4])))
+		self.assertEqual(self.testY_1, self.lr_model.classify(self.testX_1))
+		self.assertEqual(self.testY_2, self.lr_model.classify(self.testX_2))
 
 
 	def testTrainMethod1(self):
 		self.lr_model.train_method = 1
-		pass
 
 
 	def testPredictMethod1(self):
 		self.lr_model.train_method = 1
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(True, self.predict(array([1, 1, 3, 4])) > 0)
+		self.assertEqual(True, self.testY_1 * self.lr_model.predict(self.testX_1) > 0)
+		self.assertEqual(True, self.testY_2 * self.lr_model.predict(self.testX_2) > 0)
 
 
 	def testClassifyMethod1(self):
 		self.lr_model.train_method = 1
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(1, self.classify(array([1, 1, 3, 4])))
+		self.assertEqual(self.testY_1, self.lr_model.classify(self.testX_1))
+		self.assertEqual(self.testY_2, self.lr_model.classify(self.testX_2))
 
 
 	def testTrainMethod2(self):
 		self.lr_model.train_method = 2
-		pass
 
 
 	def testPredictMethod2(self):
 		self.lr_model.train_method = 2
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(True, self.predict(array([1, 1, 3, 4])) > 0)
+		self.assertEqual(True, self.testY_1 * self.lr_model.predict(self.testX_1) > 0)
+		self.assertEqual(True, self.testY_2 * self.lr_model.predict(self.testX_2) > 0)
 
 
 	def testClassifyMethod2(self):
 		self.lr_model.train_method = 2
 		self.lr_model.train(self.trainX, self.trainY)
-		self.assertEqual(1, self.classify(array([1, 1, 3, 4])))
+		self.assertEqual(self.testY_1, self.lr_model.classify(self.testX_1))
+		self.assertEqual(self.testY_2, self.lr_model.classify(self.testX_2))
 #endclass TestLogisticRegression
