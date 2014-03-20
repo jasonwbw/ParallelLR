@@ -21,7 +21,6 @@ class LR(LogisticRegression):
 			return
 
 		for i in xrange(self.max_step):
-			# TODO : other training method
 			if self.train_method == 0: 
 				dt = - self.gd_train(X, Y, i)
 				if i != 0 :
@@ -56,8 +55,13 @@ class LR(LogisticRegression):
 
 
 	def sgd_train(self, X, Y, step):
-		# TODO: complete
-		pass
+		multiply = lambda a, b: array([(a[i] * b[i]) for i in xrange(len(a))], dtype=REAL)
+		for i in xrange(len(X)):
+			gt = Y[i] * (self.__sigmoid(Y[i] * dot(X[i], self.W.T)) - 1) * X[i]
+			if i == 0 and step != 0:
+				self.update(- gt, decay_alpha = (self.decay != 1))
+			else:
+				self.update(- gt)
 
 
 	def lbfgs_train(self, X, Y, step):
