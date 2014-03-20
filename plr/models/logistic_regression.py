@@ -42,7 +42,7 @@ class LogisticRegression(object):
 		    min_dt_abs : see LogisticRegression.min_dt_abs
 		    train_method : see LogisticRegression.train_method
 		"""
-		self.W = random.rand(x_size)
+		self.W = random.rand(x_size) - 0.5
 		self.alpha = alpha
 		self.decay = decay
 		self.max_step = max_step
